@@ -1,0 +1,107 @@
+================================================================================
+          MANUFACTURER FINDER TOOL - QUICK START GUIDE
+================================================================================
+
+STEP 1: INSTALL DEPENDENCIES
+----------------------------
+Open terminal in the project directory and run:
+
+    pip install -r requirements.txt
+
+
+STEP 2: SET YOUR OPENAI API KEY
+--------------------------------
+Choose ONE of these methods:
+
+Method A - Environment Variable (Mac/Linux):
+    export OPENAI_API_KEY='your-api-key-here'
+
+Method A - Environment Variable (Windows):
+    set OPENAI_API_KEY=your-api-key-here
+
+Method B - Create .env file:
+    Create a file named ".env" in this folder with:
+    OPENAI_API_KEY=your-api-key-here
+
+Method C - Provide when running:
+    You can enter it in the web interface or via command line
+
+
+STEP 3: PREPARE YOUR EXCEL FILE
+--------------------------------
+Your Excel file should have these columns:
+- MPN (Manufacturing Part Number)
+- Model Description (Product description)
+- Quantity (Amount needed)
+
+Example:
+| MPN       | Model Description          | Quantity |
+|-----------|---------------------------|----------|
+| ABC-123   | Industrial servo motor    | 100      |
+| XYZ-456   | Precision bearing         | 250      |
+
+
+STEP 4: RUN THE TOOL
+--------------------
+
+OPTION 1 - Web Interface (Recommended):
+    streamlit run app.py
+    
+    Then:
+    1. Open browser to http://localhost:8501
+    2. Enter API key (if not set in environment)
+    3. Upload your Excel file
+    4. Click "Start Analysis"
+    5. Download results
+
+
+OPTION 2 - Command Line:
+    python main.py your_data.xlsx
+    
+    Advanced options:
+    python main.py your_data.xlsx --api-key sk-xxx --output results.xlsx
+
+
+STEP 5: VIEW RESULTS
+--------------------
+Results will be saved as an Excel file with:
+- Summary sheet with key findings
+- Detailed analysis with manufacturer recommendations
+- Color-coded credibility scores
+
+
+TROUBLESHOOTING
+---------------
+Problem: "OpenAI API key not provided"
+Solution: Set OPENAI_API_KEY environment variable or provide via UI
+
+Problem: "Missing required column"
+Solution: Ensure Excel has MPN, Description, and Quantity columns
+
+Problem: "Rate limit exceeded"
+Solution: Wait a few minutes and retry, or upgrade OpenAI plan
+
+Problem: Module not found
+Solution: Run "pip install -r requirements.txt" again
+
+
+EXAMPLE USAGE
+-------------
+1. Basic usage:
+   streamlit run app.py
+
+2. Command line with all options:
+   python main.py input.xlsx --api-key sk-xxx --output results.xlsx --max-manufacturers 5
+
+
+NEED HELP?
+----------
+- Check manufacturer_finder.log for detailed error messages
+- Ensure your OpenAI API key is valid and has credits
+- Verify Excel file format matches the example above
+
+
+================================================================================
+For more information, see README.md
+================================================================================
+
